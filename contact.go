@@ -168,6 +168,18 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		return nil, err
 	}
 
+	select {
+	case x, ok := <-ch:
+	if ok {
+	    return nil, "Value %d was read"
+	} else {
+	    return nil, "Channel closed!"
+	}
+	default:
+	return nil, "No value ready, moving on."
+	}
+	
+	
 	msg, err := wac.decryptBinaryMessage([]byte(<-ch))
 	if err != nil {
 		return nil, err
