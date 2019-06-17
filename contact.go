@@ -170,9 +170,9 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	}
 
 	select {
-	case x, ok := <-ch:
+	case _, ok := <-ch:
 	if ok {
-	    return nil, errors.Wrap(err, "Value %d was read")
+	    return nil, errors.Wrap(err, "Value was read")
 	} else {
 	    return nil, errors.Wrap(err, "Channel closed!")
 	}
