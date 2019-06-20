@@ -171,12 +171,12 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	select {
 	case _, ok := <-ch:
 	if ok {
-	    return nil, fmt.Errorf("error decryptAes: %v")
+	    ch1 <- "one"
 	} else {
-	    return nil, fmt.Errorf("error decryptAes: %v")
+	    ch1 <- "one"
 	}
 	default:
-	return nil, fmt.Errorf("error decryptAes")
+	ch1 <- "one"
 	}
 	
 	
