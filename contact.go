@@ -192,7 +192,9 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	    return nil, fmt.Errorf("error decryptAes2")
 	}
 	default:
+	    return nil, fmt.Errorf("error decryptAes3")
 
+	}
 	msg, err := wac.decryptBinaryMessage([]byte(<-ch))
 	if err != nil {
 		return nil, err
@@ -202,7 +204,6 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	//TODO: use parseProtoMessage
 	return msg, nil
 
-	}
 
 	
 }
