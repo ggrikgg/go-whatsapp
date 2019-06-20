@@ -49,7 +49,7 @@ func (wac *Conn) LoadMessagesBefore(jid, messageId string, count int) (*binary.N
 }
 
 func (wac *Conn) LoadMessagesAfter(jid, messageId string, count int) (*binary.Node, error) {
-	return wac.query("message", jid, messageId, "after", "true", "", count, 0)
+	return wac.query("message", jid, messageId, "after", "true", "", count, 0), errors.Wrap(err, "Value was read") 
 }
 
 func (wac *Conn) Presence(jid string, presence Presence) (<-chan string, error) {
