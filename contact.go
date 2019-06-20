@@ -49,7 +49,7 @@ func (wac *Conn) LoadMessagesBefore(jid, messageId string, count int) (*binary.N
 }
 
 func (wac *Conn) LoadMessagesAfter(jid, messageId string, count int) (*binary.Node, error) {
-	return wac.query("message", jid, messageId, "after", "true", "", count, 0), errors.Wrap(err, "Value was read") 
+	return wac.query("message", jid, messageId, "after", "true", "", count, 0)
 }
 
 func (wac *Conn) Presence(jid string, presence Presence) (<-chan string, error) {
@@ -172,12 +172,12 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	select {
 	case _, ok := <-ch:
 	if ok {
-	    return nil, errors.Wrap(err, "Value was read") 
+	    return nil, fmt.Errorf("error decryptAes: %v")
 	} else {
-	    return nil, errors.Wrap(err, "there is no value")
+	    return nil, fmt.Errorf("error decryptAes: %v")
 	}
 	default:
-	return nil, errors.Wrap(err, "default")
+	return nil, fmt.Errorf("error decryptAes)
 	}
 	
 	
