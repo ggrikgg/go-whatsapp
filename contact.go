@@ -179,11 +179,11 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 
 		chh := make(chan string)	
 
-		select {
-		case <-ch:
-		case <-ch2:
-			return nil, fmt.Errorf("error decryptAes1")
-		}
+// 		select {
+// 		case <-ch:
+// 		case <-ch2:
+// 			return nil, fmt.Errorf("error decryptAes1")
+// 		}
 
 		select {
 		case v, ok := <-ch:
