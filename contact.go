@@ -168,8 +168,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		return nil, err
 	}
 	
-    ch1 := make(chan string)
-    ch2 := make(chan string)
+    	ch2 := make(chan string)
 	
 	
 	go func() {
@@ -180,7 +179,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	
 	select {
       	case <-ch:
-      	case msg2 := <-ch2:
+      	case <-ch2:
         return nil, fmt.Errorf("error decryptAes1")
 	}
 	
