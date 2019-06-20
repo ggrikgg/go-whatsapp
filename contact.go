@@ -168,8 +168,10 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		return nil, err
 	}
 	
-    	ch2 := make(chan string)
+	if messageId != "" {
+
 	
+	ch2 := make(chan string)
 	
 	go func() {
 		time.Sleep(time.Second * 8)
@@ -194,6 +196,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	default:
 	    return nil, fmt.Errorf("error decryptAes3")
 
+	}
 	}
 	msg, err := wac.decryptBinaryMessage([]byte(<-ch))
 	if err != nil {
