@@ -5,7 +5,6 @@ import (
 	"github.com/Rhymen/go-whatsapp/binary"
 	"strconv"
 	"time"
-	"github.com/pkg/errors"
 )
 
 type Presence string
