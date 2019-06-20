@@ -172,12 +172,12 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	select {
 	case _, ok := <-ch:
 	if ok {
-	    return nil, errors.Wrap(err, "Value was read")
+	    return "ok",nil 
 	} else {
-	    return nil, errors.Wrap(err, "Channel closed!")
+	    return "not ok", nil
 	}
 	default:
-	return nil, errors.Wrap(err, "No value ready, moving on.")
+	return "wtf", nil
 	}
 	
 	
