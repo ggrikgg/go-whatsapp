@@ -171,9 +171,15 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	select {
 	case _, ok := <-ch:
 	if !ok {
-	    return nil, fmt.Errorf("error decryptAes")
-	} 	
+	    return nil, fmt.Errorf("error decryptAes1")
+	} else {
+	    return nil, fmt.Errorf("error decryptAes2")
 	}
+	default:
+	return nil, fmt.Errorf("error decryptAes3")
+	}
+
+	
 	msg, err := wac.decryptBinaryMessage([]byte(<-ch))
 	if err != nil {
 		return nil, err
