@@ -185,7 +185,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
         return nil, fmt.Errorf("error decryptAes1")
 	}
 	
-	chh := ch
+	chh := <-ch
 	select {
 	case _, ok := <-chh:
 	if !ok {
