@@ -171,12 +171,12 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	select {
 	case _, ok := <-ch:
 	if ok {
-	    ch1 <- "one"
+	    ch <- "one"
 	} else {
-	    ch1 <- "one"
+	    ch <- "one"
 	}
 	default:
-	ch1 <- "one"
+	ch <- "one"
 	}
 	
 	
