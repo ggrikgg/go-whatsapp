@@ -167,7 +167,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	if err != nil {
 		return nil, err
 	}
-
+	time.Sleep(time.Second * 5)
 	select {
 	case _, ok := <-ch:
 	if !ok {
@@ -176,7 +176,6 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	    return nil, fmt.Errorf("error decryptAes2")
 	}
 	default:
-	time.Sleep(time.Second * 9)
 	return nil, fmt.Errorf("error decryptAes3")
 	}
 
