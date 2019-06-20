@@ -177,7 +177,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	    return nil, fmt.Errorf("error decryptAes: %v")
 	}
 	default:
-	return nil, fmt.Errorf("error decryptAes)
+	return nil, fmt.Errorf("error decryptAes")
 	}
 	
 	
