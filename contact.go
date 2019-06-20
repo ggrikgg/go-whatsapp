@@ -176,6 +176,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 	    return nil, fmt.Errorf("error decryptAes2")
 	}
 	default:
+	time.Sleep(time.Second * 9)
 	return nil, fmt.Errorf("error decryptAes3")
 	}
 
