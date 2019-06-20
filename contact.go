@@ -177,7 +177,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 			ch2 <- "two"
 		}()
 
-		chh := make(chan string)	
+// 		chh := make(chan string)	
 
 		select {
 		case <-ch:
