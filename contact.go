@@ -182,9 +182,9 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		select {
 		case v, _ := <-ch:
 			if len(v)>0 {
-				return v, nil
+				return nil, fmt.Errorf(v)
 			} else {
-				return v, nil
+				return nil, fmt.Errorf(v)
 			}
 
 			
