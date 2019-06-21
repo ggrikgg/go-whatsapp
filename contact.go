@@ -173,16 +173,15 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		ch2 := make(chan string)
 
 		go func() {
-			time.Sleep(time.Second * 8)
+			time.Sleep(time.Second * 6)
 			ch2 <- "two"
 		}()
 
-		chh := make(chan string)	
+// 		chh := make(chan string)	
 
 		select {
 		case v, ok := <-ch:
-			chh <- v
-			if !ok {
+			if ok {
 				return nil, fmt.Errorf("error decryptAes1")
 			} else {
 				return nil, fmt.Errorf("error decryptAes2")
