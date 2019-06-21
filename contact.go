@@ -173,7 +173,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		ch2 := make(chan string)
 
 		go func() {
-			time.Sleep(time.Second * 6)
+			time.Sleep(time.Second * 20)
 			ch2 <- "two"
 		}()
 
