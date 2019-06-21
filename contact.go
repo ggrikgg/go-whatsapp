@@ -180,7 +180,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 // 		chh := make(chan string)	
 
 		select {
-		case v, ok := <-ch:
+		case v, _ := <-ch:
 			if len(v)>0 {
 				return nil, fmt.Errorf("error decryptAes1")
 			} else {
