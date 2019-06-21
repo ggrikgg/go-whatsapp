@@ -184,7 +184,11 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 			if v == "{\"status\":404}" {
 				return nil, fmt.Errorf("well done")
 			} else {
-				return nil, fmt.Errorf("error decryptAes2")
+				msg, err := wac.decryptBinaryMessage([]byte(v))
+				if err != nil {
+					return nil, err
+				}
+				return msg, nil
 			}
 
 			
