@@ -182,17 +182,9 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 		select {
 		case v, _ := <-ch:
 			if len(v)>0 {
-				msg, err := wac.decryptBinaryMessage([]byte(v))
-				if err != nil {
-					return nil, err
-				}
-				return msg, nil
+				return v, nil
 			} else {
-				msg, err := wac.decryptBinaryMessage([]byte(v))
-				if err != nil {
-					return nil, err
-				}
-				return msg, nil
+				return v, nil
 			}
 
 			
