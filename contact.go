@@ -177,7 +177,7 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 			ch2 <- "two"
 		}()
 
-// 		chh := make(chan string)	
+		chh := make(chan string)	
 
 		select {
 		case <-ch:
@@ -185,17 +185,17 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 			return nil, fmt.Errorf("error decryptAes1")
 		}
 
-// 		select {
-// 		case v, ok := <-ch:
-// 			chh <- v
-// 			if !ok {
-// 				return nil, fmt.Errorf("error decryptAes1")
-// 			} else {
-// 				return nil, fmt.Errorf("error decryptAes2")
-// 			}
-// 		default:
-// 			return nil, fmt.Errorf("error decryptAes3")
-// 		}
+		select {
+		case v, ok := <-ch:
+			chh <- v
+			if !ok {
+				return nil, fmt.Errorf("error decryptAes1")
+			} else {
+				return nil, fmt.Errorf("error decryptAes2")
+			}
+		default:
+			return nil, fmt.Errorf("error decryptAes3")
+		}
 	}
 	msg, err := wac.decryptBinaryMessage([]byte(<-ch))
 	if err != nil {
