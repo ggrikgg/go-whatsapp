@@ -181,10 +181,10 @@ func (wac *Conn) query(t, jid, messageId, kind, owner, search string, count, pag
 
 		select {
 		case v, _ := <-ch:
-			if len(v)>0 {
-				return nil, fmt.Errorf(v)
+			if v == "{\"status\":404}" {
+				return nil, fmt.Errorf("well done")
 			} else {
-				return nil, fmt.Errorf(v)
+				return nil, fmt.Errorf("error decryptAes2")
 			}
 
 			
